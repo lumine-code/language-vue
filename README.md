@@ -13,7 +13,7 @@ Vue language support.
 
 ## Installation
 
-To install `language-vue` search for _language-vue_ in the Install pane of the Lumine settings or run `lumine --install lumine-code/language-vue`.
+To install `language-vue` search for it in the Install pane of the Lumine settings, or run the command `lumine --install lumine-code/language-vue`.
 
 ## Usage
 
@@ -23,8 +23,8 @@ Interpolations and directive values are highlighted as TypeScript, which parses 
 
 ## Services
 
-- **hyperlink.injection** (`^1.0.0`): consumed to highlight URLs inside comments and plain attribute values as clickable links. Directive values are excluded — they are expressions, not URLs.
-- **todo.injection** (`^1.0.0`): consumed to highlight `TODO`-style markers inside comments.
+- `hyperlink.injection`: consumed to highlight URLs inside comments and plain attribute values as clickable links. Directive values are excluded — they are expressions, not URLs.
+- `todo.injection`: consumed to highlight `TODO`-style markers inside comments.
 
 ## Contributing
 
