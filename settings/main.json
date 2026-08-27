@@ -6,21 +6,17 @@
       // completion stops at the dash.
       "extraWordCharacters": "-"
     },
-    "language": {
+    "bracket-matcher": {
+      "autocompleteCharacters": ["()", "[]", "{}", "\"\"", "''"]
+    },
+    "editor": {
       "commentStart": "<!-- ",
       "commentEnd": " -->",
       "commentDelimiters": {
         "block": ["<!--", "-->"]
       },
-      // Markup, not braces. Ported from language-html's pair, minus its PHP and
-      // Smarty alternations, which no SFC contains. The trailing `\\{[^}\"']*$`
-      // stays: an interpolation or a directive value can open an object literal
-      // and continue on the next line.
       "increaseIndentPattern": "(?x)\n<(?!\\?|(?:area|base|br|col|frame|hr|html|img|input|link|meta|param)\\b|[^>]*/>)\n([-_\\.A-Za-z0-9]+)(?=\\s|>)\\b[^>]*>(?!.*</\\1>)\n|<!--(?!.*-->)\n|\\{[^}\"']*$",
       "decreaseIndentPattern": "(?x)\n^\\s*\n(</(?!html)\n  [-_\\.A-Za-z0-9]+\\b[^>]*>\n  |-->\n  |\\}\n)"
-    },
-    "bracket-matcher": {
-      "autocompleteCharacters": ["()", "[]", "{}", "\"\"", "''"]
     }
   }
 }
