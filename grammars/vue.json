@@ -15,7 +15,7 @@
     // all, so this is HEAD of `main` — "fix(scanner): support Windows line
     // endings", 2026-01-24, which is the commit that makes a CRLF SFC parse.
     "parserSource": "github:tree-sitter-grammars/tree-sitter-vue#ce8011a414fdf8091f4e4071752efc376f4afb08",
-    "wasmBuildTool": "tree-sitter-cli#v0.26.13",
+    "wasmBuildTool": "tree-sitter-cli#v0.27.0",
     "grammar": "vue.wasm",
     // tree-sitter-vue embeds tree-sitter-html's grammar, so the HTML half of
     // each query is a port of language-html's and stays in its own file — keep
