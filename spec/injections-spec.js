@@ -1,4 +1,5 @@
 const path = require("path");
+const { STYLE_LANGUAGES } = require("../lib/languages");
 
 // The half of the grammar `tree-sitter-grammar-spec.js` cannot reach.
 //
@@ -28,12 +29,12 @@ describe("Vue injections", () => {
   let editor;
 
   beforeEach(async () => {
-    lumine.config.set("editor.useTreeSitterParsers", true);
     await lumine.packages.activatePackage("language-vue");
     // Every grammar the fixture's `lang` attributes and expressions resolve to.
     await lumine.packages.activatePackage("language-javascript");
     await lumine.packages.activatePackage("language-typescript");
     await lumine.packages.activatePackage("language-css");
+    await lumine.packages.activatePackage("language-less");
     await lumine.packages.activatePackage("language-sass");
 
     editor = await lumine.workspace.open(FIXTURE);
@@ -73,16 +74,16 @@ describe("Vue injections", () => {
   });
 
   describe("language resolution", () => {
-    // `language()` returns a language string; the registry matches it against
-    // every grammar's `injectionRegex`, longest match wins. These assert the
-    // mapping table in `lib/main.js` reaches a real grammar, which is the part
-    // that silently degrades to no highlighting at all when it does not.
+    // `language()` returns an exact injection alias. These assertions verify
+    // that every runtime mapping reaches one registered grammar.
     const CASES = [
       ["javascript", "source.js"],
       ["typescript", "source.ts"],
       ["tsx", "source.tsx"],
       ["css", "source.css"],
       ["scss", "source.css.scss"],
+      ["less", "source.css.less"],
+      ["sass", "source.sass"],
     ];
 
     for (const [languageString, scopeName] of CASES) {
@@ -91,5 +92,10 @@ describe("Vue injections", () => {
         expect(grammar?.scopeName).toBe(scopeName);
       });
     }
+
+    it("maps Less and indented Sass to their dedicated parser aliases", () => {
+      expect(STYLE_LANGUAGES.less).toBe("less");
+      expect(STYLE_LANGUAGES.sass).toBe("sass");
+    });
   });
 });

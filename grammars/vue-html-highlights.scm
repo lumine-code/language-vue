@@ -3,7 +3,7 @@
 ;
 ; tree-sitter-vue embeds tree-sitter-html's grammar wholesale, so every node and
 ; token below carries the same name it does there and this file is a port of
-; `language-html/grammars/tree-sitter-html/highlights.scm`. Keep it diffable
+; `language-html/grammars/html-highlights.scm`. Keep it diffable
 ; against that origin: Vue's own rules live in `highlights.scm`, which loads
 ; after this file.
 ;

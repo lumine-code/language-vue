@@ -26,7 +26,11 @@
     "lumine": "^1.0.0"
   },
   "specPackages": [
-    "language-sass"
+    "language-css",
+    "language-javascript",
+    "language-less",
+    "language-sass",
+    "language-typescript"
   ],
   "scripts": {
     "test": "lumine --test spec",

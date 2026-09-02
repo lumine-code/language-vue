@@ -7,7 +7,7 @@ Vue language support.
 - **Grammars**: provides Tree-sitter grammars, built from [tree-sitter-vue](https://github.com/tree-sitter-grammars/tree-sitter-vue).
 - **Syntax highlighting**: full tree-sitter grammar coverage for single-file components.
 - **Directives**: scopes `v-` directives, the `:`, `@`, `#` and `.` shorthands, dynamic arguments and modifiers.
-- **Embedded languages**: highlights each block in the language its `lang` attribute names — JavaScript, TypeScript, TSX, CSS or SCSS.
+- **Embedded languages**: highlights each block in the language its `lang` attribute names — JavaScript, TypeScript, TSX, CSS, SCSS, Less or Sass.
 - **Expressions**: highlights interpolations and directive values as code rather than as strings.
 - **Folding**: folds blocks from the parse tree rather than by indentation.
 
@@ -17,7 +17,7 @@ To install `language-vue` search for it in the Install pane of the Lumine settin
 
 ## Usage
 
-`<script>` and `<style>` blocks are highlighted according to their `lang` attribute, defaulting to JavaScript and CSS. `less` and `postcss` are read with the SCSS grammar, which is close enough to be useful; indented `sass`, `stylus` and `pug` have no Tree-sitter grammar in the ecosystem and are left unhighlighted rather than highlighted wrongly.
+`<script>` and `<style>` blocks are highlighted according to their `lang` attribute, defaulting to JavaScript and CSS. Less, SCSS and indented Sass use their dedicated parsers; PostCSS uses CSS as a structural fallback. Stylus and Pug remain unhighlighted because no corresponding grammar is registered.
 
 Interpolations and directive values are highlighted as TypeScript, which parses both plain JavaScript expressions and the ones a component written with `lang="ts"` will contain.
 

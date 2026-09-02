@@ -14,9 +14,7 @@
       "commentEnd": " -->",
       "commentDelimiters": {
         "block": ["<!--", "-->"]
-      },
-      "increaseIndentPattern": "(?x)\n<(?!\\?|(?:area|base|br|col|frame|hr|html|img|input|link|meta|param)\\b|[^>]*/>)\n([-_\\.A-Za-z0-9]+)(?=\\s|>)\\b[^>]*>(?!.*</\\1>)\n|<!--(?!.*-->)\n|\\{[^}\"']*$",
-      "decreaseIndentPattern": "(?x)\n^\\s*\n(</(?!html)\n  [-_\\.A-Za-z0-9]+\\b[^>]*>\n  |-->\n  |\\}\n)"
+      }
     }
   }
 }

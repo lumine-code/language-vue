@@ -13,7 +13,6 @@ const path = require("path");
 
 describe("Vue Tree-sitter grammar", () => {
   beforeEach(async () => {
-    lumine.config.set("editor.useTreeSitterParsers", true);
     await lumine.packages.activatePackage("language-vue");
     // The fixture asserts `source.ts` inside an interpolation and a directive
     // value. Without this the injection resolves to nothing, the assertion

@@ -3,7 +3,7 @@
   "scopeName": "text.html.vue",
   "type": "tree-sitter",
   "parser": "tree-sitter-vue",
-  "injectionRegex": "^(vue|Vue|VUE)$",
+  "injectionNames": ["vue"],
   "fileTypes": ["vue"],
   "comments": {
     "start": "<!-- ",
@@ -16,16 +16,16 @@
     // endings", 2026-01-24, which is the commit that makes a CRLF SFC parse.
     "parserSource": "github:tree-sitter-grammars/tree-sitter-vue#ce8011a414fdf8091f4e4071752efc376f4afb08",
     "wasmBuildTool": "tree-sitter-cli#v0.26.13",
-    "grammar": "tree-sitter-vue/tree-sitter-vue.wasm",
+    "grammar": "vue.wasm",
     // tree-sitter-vue embeds tree-sitter-html's grammar, so the HTML half of
     // each query is a port of language-html's and stays in its own file — keep
     // that file diffable against its origin. Vue's own rules load second, so
     // they can build on what the HTML rules already applied.
-    "highlightsQuery": ["tree-sitter-vue/html-highlights.scm", "tree-sitter-vue/highlights.scm"],
-    "foldsQuery": ["tree-sitter-vue/html-folds.scm", "tree-sitter-vue/folds.scm"],
+    "highlightsQuery": ["vue-html-highlights.scm", "vue-highlights.scm"],
+    "foldsQuery": ["vue-html-folds.scm", "vue-folds.scm"],
     // No Vue half: `template_element` aliases its opening tag to `start_tag`,
     // so language-html's two rules already indent it.
-    "indentsQuery": "tree-sitter-vue/indents.scm"
+    "indentsQuery": "vue-indents.scm"
     // No tags query: an SFC declares no symbols a tag file would index.
   }
 }
