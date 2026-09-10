@@ -85,10 +85,6 @@
 
 ; The SFC's own three top-level blocks. `template` is the only one whose tag
 ; name the HTML rules do not already classify.
-(template_element
-  (start_tag
-    (tag_name) @entity.name.tag.structure._TEXT_.vue))
-
-(template_element
-  (end_tag
-    (tag_name) @entity.name.tag.structure._TEXT_.vue))
+((tag_name) @entity.name.tag.structure._TEXT_.vue
+  (#is? test.childOfType "start_tag end_tag")
+  (#is? test.typeAt "parent.parent template_element"))
