@@ -10,6 +10,7 @@ const { STYLE_LANGUAGES } = require("../lib/languages");
 // by position.
 
 const FIXTURE = path.join(__dirname, "fixtures", "sample.vue");
+const packagePath = (name) => path.resolve(__dirname, "..", "..", name);
 
 // The first column of the first line whose text contains `needle`.
 function positionOf(editor, needle, offset = 0) {
@@ -31,11 +32,11 @@ describe("Vue injections", () => {
   beforeEach(async () => {
     await lumine.packages.activatePackage("language-vue");
     // Every grammar the fixture's `lang` attributes and expressions resolve to.
-    await lumine.packages.activatePackage("language-javascript");
-    await lumine.packages.activatePackage("language-typescript");
-    await lumine.packages.activatePackage("language-css");
-    await lumine.packages.activatePackage("language-less");
-    await lumine.packages.activatePackage("language-sass");
+    await lumine.packages.activatePackage(packagePath("language-javascript"));
+    await lumine.packages.activatePackage(packagePath("language-typescript"));
+    await lumine.packages.activatePackage(packagePath("language-css"));
+    await lumine.packages.activatePackage(packagePath("language-less"));
+    await lumine.packages.activatePackage(packagePath("language-sass"));
 
     editor = await lumine.workspace.open(FIXTURE);
     await editor.languageMode.ready;

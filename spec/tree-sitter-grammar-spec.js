@@ -4,6 +4,7 @@ const { Point } = require("lumine");
 
 const HTML_HIGHLIGHTS_PATH = path.join(__dirname, "..", "grammars", "vue-html-highlights.scm");
 const VUE_HIGHLIGHTS_PATH = path.join(__dirname, "..", "grammars", "vue-highlights.scm");
+const packagePath = (name) => path.resolve(__dirname, "..", "..", name);
 
 // Asserts the scopes the grammar actually produces, using the fixture beside
 // this file. `runGrammarTests` reads `<- scope` and `^ scope` assertions out of
@@ -22,7 +23,7 @@ describe("Vue Tree-sitter grammar", () => {
     // The fixture asserts `source.ts` inside an interpolation and a directive
     // value. Without this the injection resolves to nothing, the assertion
     // fails, and the reason is not obvious from the message.
-    await lumine.packages.activatePackage("language-typescript");
+    await lumine.packages.activatePackage(packagePath("language-typescript"));
   });
 
   it("tokenizes the fixture", async () => {
