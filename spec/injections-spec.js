@@ -42,8 +42,8 @@ describe("Vue injections", () => {
     await editor.languageMode.ready;
   });
 
-  it("parses the fixture without error", () => {
-    expect(editor.getBuffer().getLanguageMode().tree.rootNode.hasError).toBe(false);
+  it("parses the fixture without error", async () => {
+    expect((await editor.getSyntaxDiagnostics()).hasError).toBe(false);
   });
 
   it('injects TypeScript into `<script lang="ts">`', () => {
