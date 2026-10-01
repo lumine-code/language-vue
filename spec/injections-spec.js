@@ -1,4 +1,5 @@
 const path = require("path");
+const fs = require("fs");
 const { STYLE_LANGUAGES } = require("../lib/languages");
 
 // The half of the grammar `tree-sitter-grammar-spec.js` cannot reach.
@@ -10,7 +11,10 @@ const { STYLE_LANGUAGES } = require("../lib/languages");
 // by position.
 
 const FIXTURE = path.join(__dirname, "fixtures", "sample.vue");
-const packagePath = (name) => path.resolve(__dirname, "..", "..", name);
+const packagePath = (name) => {
+  const sibling = path.resolve(__dirname, "..", "..", name);
+  return fs.existsSync(sibling) ? sibling : name;
+};
 
 // The first column of the first line whose text contains `needle`.
 function positionOf(editor, needle, offset = 0) {
@@ -110,6 +114,27 @@ describe("Vue injections", () => {
     expect(scopesAt(editor, positionOf(editor, "const untouched"))).not.toContain("source.js");
     expect(scopesAt(editor, positionOf(editor, ".card"))).toContain("source.css");
     expect(scopesAt(editor, positionOf(editor, ".untouched"))).not.toContain("source.css");
+  });
+
+  it("annotates plain attribute values and comments without treating directives as URLs", async () => {
+    await lumine.packages.activatePackage(packagePath("language-hyperlink"));
+    await lumine.packages.activatePackage(packagePath("language-todo"));
+    editor.setText(
+      "<template><!-- TODO https://example.com/comment -->" +
+        '<a href="https://example.com/quoted" data-url=https://example.com/bare ' +
+        ":href=\"'https://example.com/expression'\">link</a></template>",
+    );
+    await editor.languageMode.atGrammarSettlement();
+    const annotations = editor.languageMode
+      .getAllInjectionLayers()
+      .filter((layer) => layer.depth === 1 && layer.grammar.scopeName === "text.hyperlink");
+    expect(annotations.length).toBe(3);
+    const contents = annotations.flatMap((layer) =>
+      layer.getCurrentRanges().map((range) => editor.getTextInBufferRange(range)),
+    );
+    expect(contents.join("\n")).toContain("/quoted");
+    expect(contents.join("\n")).toContain("/bare");
+    expect(contents.join("\n")).not.toContain("/expression");
   });
 
   describe("language resolution", () => {

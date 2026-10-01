@@ -21,11 +21,6 @@ To install `language-vue` search for it in the Install pane of the Lumine settin
 
 Interpolations and directive values are highlighted as TypeScript, which parses both plain JavaScript expressions and the ones a component written with `lang="ts"` will contain.
 
-## Services
-
-- `hyperlink.injection`: consumed to highlight URLs inside comments and plain attribute values as clickable links. Directive values are excluded — they are expressions, not URLs.
-- `todo.injection`: consumed to highlight `TODO`-style markers inside comments.
-
 ## Contributing
 
 Got ideas to make this package better, found a bug, or want to help add new features? Just drop your thoughts on GitHub. Any feedback is welcome!
