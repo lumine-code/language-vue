@@ -22,6 +22,7 @@
     // that file diffable against its origin. Vue's own rules load second, so
     // they can build on what the HTML rules already applied.
     "highlightsQuery": ["vue-html-highlights.scm", "vue-highlights.scm"],
+    "injectionsQuery": "vue-injections.scm",
     "foldsQuery": ["vue-html-folds.scm", "vue-folds.scm"],
     // No Vue half: `template_element` aliases its opening tag to `start_tag`,
     // so language-html's two rules already indent it.

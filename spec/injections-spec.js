@@ -43,7 +43,7 @@ describe("Vue injections", () => {
   });
 
   it("parses the fixture without error", async () => {
-    expect((await editor.getSyntaxDiagnostics()).hasError).toBe(false);
+    expect(editor.languageMode.tree.rootNode.hasError).toBe(false);
   });
 
   it('injects TypeScript into `<script lang="ts">`', () => {
@@ -72,6 +72,44 @@ describe("Vue injections", () => {
     // expression, and must not pick up a source scope.
     const position = positionOf(editor, 'class="a"', 7);
     expect(scopesAt(editor, position)).not.toContain("source.ts");
+  });
+
+  it("injects quoted and unquoted directive values alongside dynamic script blocks", async () => {
+    editor.setText(
+      '<template><p v-if=enabled :title="value" class="plain">{{ count }}</p></template><script>const x = 1;</script>',
+    );
+    await editor.languageMode.atTransactionEnd();
+    for (const needle of ["enabled", "value", "count"]) {
+      expect(scopesAt(editor, positionOf(editor, needle))).toContain("source.ts");
+    }
+    expect(scopesAt(editor, positionOf(editor, "plain"))).not.toContain("source.ts");
+    expect(scopesAt(editor, positionOf(editor, "const"))).toContain("source.js");
+    expect(
+      editor.languageMode
+        .getAllInjectionLayers()
+        .filter((layer) => layer.grammar.scopeName === "source.ts").length,
+    ).toBe(3);
+  });
+
+  it("preserves block aliases, defaults and unknown-language refusal", async () => {
+    editor.setText(
+      [
+        '<script lang=" MJS ">const first = 1;</script>',
+        '<script lang="babel">const second = 2;</script>',
+        "<script>const fallback = 3;</script>",
+        '<script lang="unknown">const untouched = 4;</script>',
+        '<style lang="POSTCSS">.card { color: red; }</style>',
+        '<style lang="stylus">.untouched { color: red; }</style>',
+        "<script></script><style></style>",
+      ].join("\n"),
+    );
+    await editor.languageMode.atTransactionEnd();
+    for (const needle of ["first", "second", "fallback"]) {
+      expect(scopesAt(editor, positionOf(editor, needle))).toContain("source.js");
+    }
+    expect(scopesAt(editor, positionOf(editor, "const untouched"))).not.toContain("source.js");
+    expect(scopesAt(editor, positionOf(editor, ".card"))).toContain("source.css");
+    expect(scopesAt(editor, positionOf(editor, ".untouched"))).not.toContain("source.css");
   });
 
   describe("language resolution", () => {
