@@ -1,0 +1,16 @@
+{
+  "title": "language-vue",
+  "description": "Vue syntax highlighting in the editor.",
+  "recordedOn": "2026-10-13",
+  "sourceRevision": "3bf86385901ac21adc42076ea6f442d013fc0c76",
+  "mode": "normal",
+  "fontSettings": "default",
+  "images": [
+    {
+      "file": "demo.png",
+      "label": "Vue syntax highlighting at the default editor font size.",
+      "width": 1100,
+      "height": 692
+    }
+  ]
+}

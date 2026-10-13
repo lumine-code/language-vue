@@ -11,6 +11,8 @@ Vue language support.
 - **Expressions**: highlights interpolations and directive values as code rather than as strings.
 - **Folding**: folds blocks from the parse tree rather than by indentation.
 
+![Vue syntax highlighting at the default editor font size.](.github/demo.png)
+
 ## Installation
 
 To install `language-vue` search for it in the Install pane of the Lumine settings, or run the command `lumine --install lumine-code/language-vue`.
