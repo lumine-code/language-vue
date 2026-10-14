@@ -1,16 +1,61 @@
 {
   "title": "language-vue",
-  "description": "Vue syntax highlighting in the editor.",
-  "recordedOn": "2026-10-13",
-  "sourceRevision": "3bf86385901ac21adc42076ea6f442d013fc0c76",
+  "description": "Vue syntax highlighting at the default editor font size.",
+  "recordedOn": "2026-10-14",
+  "sourceRevision": "dbac979b399b2ebfeb2205e35292a4b21989ac3a",
+  "themeSourceRevision": "14a69683b0e3238e2bc128fbfae3866c1e4ee9c6",
   "mode": "normal",
   "fontSettings": "default",
+  "scenario": "demo.js",
+  "recipeHash": "ad7a1c34e30abdccd4fb4c4e4e1638db38704e57fe2d2a977977d6d5fd309c2f",
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "electron": "44.7.0",
+    "chrome": "152.0.7977.130",
+    "devicePixelRatio": 1,
+    "locale": "en-GB",
+    "fontFamily": "Fira Code, Menlo, DejaVu Sans Mono, Consolas, monospace",
+    "fontSize": 14,
+    "themes": ["one-day-syntax", "one-day-ui"]
+  },
+  "viewport": { "width": 1100, "height": 692 },
+  "cornerRadius": 10,
+  "sources": {
+    "editor": {
+      "revision": "0362a9fac7d6e153a768c0381800d6f3eb06647a",
+      "dirty": true,
+      "workingTreeHash": "c4defaf459f08a90cb1517ff7c04fdeeae7e7de98030f65415ee09a97572e9a7"
+    },
+    "package": {
+      "revision": "dbac979b399b2ebfeb2205e35292a4b21989ac3a",
+      "dirty": true,
+      "workingTreeHash": "bca117b22c59a8dd4e119a0ca09542ecc93b756541fae07b7847a90a2f509940"
+    },
+    "language-vue": {
+      "revision": "dbac979b399b2ebfeb2205e35292a4b21989ac3a",
+      "dirty": true,
+      "workingTreeHash": "bca117b22c59a8dd4e119a0ca09542ecc93b756541fae07b7847a90a2f509940"
+    },
+    "one-theme": {
+      "revision": "14a69683b0e3238e2bc128fbfae3866c1e4ee9c6",
+      "dirty": true,
+      "workingTreeHash": "50ec2f83a6347dd8113870992ec4eb2be4014f3d9e12213c2f51b543f1eca793"
+    }
+  },
+  "fixtures": [
+    {
+      "file": "example.vue",
+      "sha256": "f713bf6d3d8929858fcf0ae60dbca13dfa933da9c477f5ea9d5716b1837f5a82"
+    }
+  ],
   "images": [
     {
       "file": "demo.png",
       "label": "Vue syntax highlighting at the default editor font size.",
       "width": 1100,
-      "height": 692
+      "height": 692,
+      "sha256": "7f142541e7f828d2008ad5d3a4b92a5de47f9b643afb638a2564257f1a8a24e6"
     }
   ]
 }
