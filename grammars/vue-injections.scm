@@ -1,14 +1,16 @@
 ; TypeScript also parses JavaScript expressions and the SFC's TS expressions.
 ((interpolation
   (raw_text) @injection.content) @injection.owner
-  (#set! injection.language "typescript"))
+  (#set! injection.language "typescript")
+  (#set! injection.content-edit-policy "content-words"))
 
 ((directive_attribute
   [
     (quoted_attribute_value (attribute_value) @injection.content)
     (attribute_value) @injection.content
   ]) @injection.owner
-  (#set! injection.language "typescript"))
+  (#set! injection.language "typescript")
+  (#set! injection.content-edit-policy "content-words"))
 
 ; Annotation candidates are filtered by the target grammar.
 ((comment) @injection.owner @injection.content

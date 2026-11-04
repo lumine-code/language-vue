@@ -26,7 +26,10 @@
     "foldsQuery": ["vue-html-folds.scm", "vue-folds.scm"],
     // No Vue half: `template_element` aliases its opening tag to `start_tag`,
     // so language-html's two rules already indent it.
-    "indentsQuery": "vue-indents.scm"
+    "indentsQuery": "vue-indents.scm",
     // No tags query: an SFC declares no symbols a tag file would index.
+    "contentEditPolicies": {
+      "content-words": "../lib/content-edit-policy.js"
+    }
   }
 }
