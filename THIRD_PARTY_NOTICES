@@ -2,6 +2,9 @@
 Source: https://github.com/tree-sitter-grammars/tree-sitter-vue
 Revision: ce8011a414fdf8091f4e4071752efc376f4afb08
 
+Parser source: github:tree-sitter-grammars/tree-sitter-vue#ce8011a414fdf8091f4e4071752efc376f4afb08
+Resolved commit: ce8011a414fdf8091f4e4071752efc376f4afb08
+
 Original file: LICENSE
 
 Copyright (c) 2024 Amaan Qureshi <amaanq12@gmail.com>
